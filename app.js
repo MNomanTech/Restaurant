@@ -28,6 +28,5 @@ async function main() {
 app.use(express.urlencoded({extended: true}));
 
 
-
 // all router middle wares
 app.use("/menu", menuRoute);
