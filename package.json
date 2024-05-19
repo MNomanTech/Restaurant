@@ -10,11 +10,11 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "ejs-mate": "^4.0.0",
     "express": "^4.19.2",
     "method-override": "^3.0.0",
     "mongoose": "^8.4.0"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Mohd-git-087/Restaurant.git"
@@ -22,5 +22,6 @@
   "bugs": {
     "url": "https://github.com/Mohd-git-087/Restaurant/issues"
   },
-  "homepage": "https://github.com/Mohd-git-087/Restaurant#readme"
+  "homepage": "https://github.com/Mohd-git-087/Restaurant#readme",
+  "devDependencies": {}
 }
