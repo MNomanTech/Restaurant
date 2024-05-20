@@ -2,8 +2,10 @@
 import Food from "../Model/foodModel.js";
 
 let getFoodItems = async (req,res) => {
-    let result = await Food.find();
-    console.log(result);
+    let mainCourse = await Food.find({category: 'Main Course'});
+    let starters = await Food.find({category: "Starter"});
+    let desserts = await Food.find({category: "Dessert"});
+    res.render("Menu/menu.ejs", {mainCourse,starters,desserts});
 };
 
 let addFoodItem = async (req, res) => {

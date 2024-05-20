@@ -1,5 +1,4 @@
-
-export default [
+let sample =  [
     {
       name: "Hyderabadi Biryani",
       category: "Main Course",
@@ -102,4 +101,6 @@ export default [
     },
   ];
 
-  
+  sample = sample.map((el) => ({...el, price: Math.floor(el.price*83.26)}));
+
+  export default sample;

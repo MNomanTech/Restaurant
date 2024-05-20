@@ -16,6 +16,7 @@ async function main() {
 
 
 let addItems = async function(){
+
     await Food.deleteMany({});
     await Food.insertMany(mainCourseSample);
     await Food.insertMany(startersSample);

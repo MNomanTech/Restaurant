@@ -1,4 +1,111 @@
-<% layout("Boilerplate/boilerplate.ejs") -%>
+<% layout("Layouts/boilerplate.ejs") -%>
 
 
-<h1>Hello</h1>
+<!-- menu cover images -->
+    <div>
+        <img src="https://images.unsplash.com/photo-1716188810859-0bf7bb80df85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="..." class="img-fluid" >
+    </div>
+
+
+<!-- menu headling -->
+<div class="row text-center mt-5">
+    <div class="col">
+        <h1>MAIN MENU</h1>
+        <P>Welcome to our restaurant! We pride ourselves on offering a diverse and delicious menu to satisfy all tastes</P>
+    </div>
+</div>
+
+<!-- main course heading -->
+<div class="row mt-5">
+    <div class="col-12 col-xl-10">
+        <h2 class="text-center text-xl-end">MAIN COURSES</h2>
+    </div>
+</div>
+<!-- main course list-->
+<div class="row">
+    
+    <div class="col-xxl-6 col-12 mt-5  ">
+        <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" class="img-fluid" >
+    </div>
+                                                    <!-- list of main course -->
+    <div class="col-xxl-6 col-12 mt-5"> 
+
+        <% mainCourse.forEach((element) => { %>
+            <div>
+                <div class="d-flex justify-content-between">
+                    <h4> <%= element.name %> </h4>
+                    <h4>&#8377;<%= element.price %></h4>
+                </div>
+                <p><%= element.description %></p>
+            </div>
+            <hr>
+        <% }); %>
+        
+    </div>
+</div>
+
+
+    <!-- starter heading -->
+<div class="row mt-5">
+    <div class="col-xl-6 col-12">
+        <h2 class="text-center">STARTERS</h2>
+    </div>
+</div>
+
+<!-- Starters list-->
+<div class="row">
+                                                    <!-- list of Starters -->
+    <div class="col-xxl-6 col-12 mt-5"> 
+
+        <% starters.forEach((element) => { %>
+            <div>
+                <div class="d-flex justify-content-between">
+                    <h4> <%= element.name %> </h4>
+                    <h4>&#8377;<%= element.price %></h4>
+                </div>
+                <p><%= element.description %></p>
+            </div>
+            <hr>
+        <% }); %>
+
+    </div>
+
+    <!-- starters image -->
+    <div class="col-xxl-6 col-12 mt-5  ">
+        <img src="https://plus.unsplash.com/premium_photo-1669742928112-19364a33b530?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" class="img-fluid" >
+    </div>
+
+</div>
+
+<!-- desserts heading -->
+<div class="row mt-5">
+    <div class="col-12 col-xl-10">
+        <h2 class="text-center text-xl-end">DESSERTS</h2>
+    </div>
+</div>
+
+<!-- desserts list-->
+<div class="row">
+
+    <!-- desserts image -->
+    <div class="col-xxl-6 col-12 mt-5  ">
+        <img src="https://images.unsplash.com/photo-1560180474-e8563fd75bab?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" class="img-fluid" >
+    </div>
+
+    
+                                                    <!-- list of desserts -->
+    <div class="col-xxl-6 col-12 mt-5"> 
+
+        <% desserts.forEach((element) => { %>
+            <div>
+                <div class="d-flex justify-content-between">
+                    <h4> <%= element.name %> </h4>
+                    <h4>&#8377;<%= element.price %></h4>
+                </div>
+                <p><%= element.description %></p>
+            </div>
+            <hr>
+        <% }); %>
+
+    </div>
+</div>
