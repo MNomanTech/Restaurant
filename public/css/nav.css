@@ -1,0 +1,24 @@
+
+/* not working container 2*/
+/* .navbar-container2{
+    background-color: transparent;  
+} */
+
+@media (min-width: 1024px){
+    .nav-heading1{
+        font-size: 2rem;
+    }
+    .nav-heading2{
+        font-size: 1.5rem;
+    }
+    
+}
+
+@media (max-width: 768px){
+    .nav-heading1{
+        font-size: 1.5rem;
+    }
+    .nav-heading2{
+        font-size: 1.1rem;
+    }
+}
