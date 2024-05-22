@@ -11,6 +11,7 @@ const __dirname = path.dirname(__filename); // get the name of the directory
 // -------------------------
 // all route imports
 import menuRoute from "./Route/menuRoute.js";
+import homeRoute from "./Route/homeRoute.js";
 
 
 // server and mongodb connection
@@ -37,7 +38,10 @@ app.set("views",path.join(__dirname, "/views"));
 app.use(express.static(path.join(__dirname,'/public/css')));
 app.use(express.static(path.join(__dirname, '/public/js')));
 
+
+
 // all router middle wares
+app.use("/home", homeRoute);
 app.use("/menu", menuRoute);
 
 

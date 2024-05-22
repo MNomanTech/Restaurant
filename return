@@ -1,0 +1,35 @@
+[33mcommit 986da563d638f63b24b2888d235ef98c6a22829b[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: MohdNoman <mohammednoman757@gmail.com>
+Date:   Tue May 21 12:52:16 2024 +0530
+
+    nav-bar added
+
+[33mcommit 81ad012ab02336e84b4ee20ad93ccb6b6acf7c86[m
+Author: MohdNoman <mohammednoman757@gmail.com>
+Date:   Tue May 21 02:02:11 2024 +0530
+
+    Main Menu list added and nav-bar added
+
+[33mcommit 01a5e293e9428746913d6462d3937bae549efdf8[m
+Author: MohdNoman <mohammednoman757@gmail.com>
+Date:   Sun May 19 20:05:38 2024 +0530
+
+    ejs-mate is install and views dir is set
+
+[33mcommit be603fc06a8101dc760ed7a068eba8bced44ddc7[m
+Author: MohdNoman <mohammednoman757@gmail.com>
+Date:   Sat May 18 22:15:53 2024 +0530
+
+    order route created
+
+[33mcommit 945e6a5bca6abc2801d43453a3839de9aa00844a[m
+Author: MohdNoman <mohammednoman757@gmail.com>
+Date:   Sat May 18 17:17:24 2024 +0530
+
+    removed menuModel and created RestFul API for Menu
+
+[33mcommit 6f780227fe1c5ce6d41e14e5741bb7af98b0540b[m
+Author: MohdNoman <mohammednoman757@gmail.com>
+Date:   Sat May 18 13:30:42 2024 +0530
+
+    Created Sample Data for Restaurant
