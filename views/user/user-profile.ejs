@@ -1,0 +1,44 @@
+<% layout("Layouts/boilerplate.ejs") -%>
+
+
+
+
+<h1>Your Profile</h1>
+
+<form action="/user/2324532432432?_method=PUT" method="post" class="mt-3">
+            <label class="form-label" for="username">Username:</label>
+            <div class="input-group mb-3">
+                <span class="input-group-text">@</span>
+                <input type="text" class="form-control" value="Mohd Noman" id="username" name="username" disabled>
+            </div>
+
+            <label class="form-label" for="emailid">Email:</label>
+            
+            <div class="input-group mb-3">
+                <input type="text" name="emailid" value="mohammednoman757@gmail.com" id="emailid" class="form-control" disabled>
+                <span class="input-group-text">@example.com</span>
+            </div>
+
+            <label class="form-label" for="phone">Phone no:</label>
+            
+            <div class="input-group mb-3">
+                <span class="input-group-text">+91</span>
+                <input type="tel" name="phone" id="phone" value="9573751736" class="form-control" disabled>
+            </div>
+
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">Address</span>
+                <input type="text" name="address" id="address" value="Bandlaguda" class="form-control" disabled>
+            </div>
+            
+
+            <button type="button" class="btn btn-outline-danger" id="edit-btn">Edit</button>
+            <button type="reset" class="btn btn-outline-danger" id="cancle-btn" style="display:none;">Cancel</button>
+            <button type="submit" class="btn btn-outline-success" id="submit-btn" style="display:none;">Submit</button>
+           
+</form>
+    
+
+
+<script src="user-profileJS.js"></script>

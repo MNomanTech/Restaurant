@@ -4,7 +4,7 @@ const router = e.Router({mergeParams: true});
 
 
 // Controller Import
-import {userProfile,userUpdateProfile,userSignup,userSignCompleted,userLoginCompleted,userLogout} from "../Controller/userController.js";
+import {userProfile,userUpdateProfile,userSignup,userSignCompleted,userLogin,userLoginCompleted,userLogout} from "../Controller/userController.js";
 
 
 
