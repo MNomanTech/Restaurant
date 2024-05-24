@@ -7,15 +7,11 @@ const orderSchema = new Schema({
         ref: "User",
         // required: true,
     },
-    orderItem : [{
+    orderItem : {
         type: Schema.Types.ObjectId,
         required: true,
         ref: "Food",
-    }],
-    // totalAmount: {
-    //     type: Number,
-    //     required: true,
-    // },
+    },
     orderDate: {
         type: Date,
         default: Date.now,

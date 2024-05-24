@@ -1,40 +1,99 @@
 <% layout('Layouts/boilerplate.ejs') -%>
 
+<style>
+    .book-tabs li{
+        cursor: pointer;
+        
+    }
+    
+</style>
 
-<div class="row d-flex justify-content-center">
+<ul class="nav nav-tabs mb-3 book-tabs">
+    <li class="nav-item" >
+      <span class="nav-link active text-black" aria-current="page" id="book-now">BOOK NOW</span>
+    </li>
+    <li class="nav-item" >
+      <span class="nav-link text-black" id="booked-list">BOOKED</span>
+    </li>
+</ul>
 
-    <div class="col-lg-6">
 
-        <h1 class="text-center">BOOK A TABLE</h1>
 
-        <form action="/book" method="post">
+<!-- book now -->
+<div id="book-now-section">
+    <div class="row d-flex justify-content-center">
 
-            <div class="input-group mb-3">
-                <span class="input-group-text">Book For</span>
-                <select class="form-select" aria-label="Default select example" name="book">
-                    <option selected value="friends">FRIENDS</option>
-                    <option value="family">FAMILY</option>
-                </select>
-            </div>
-            
-            <div class="input-group mb-3">
-                <span class="input-group-text">Members</span>
-                <input type="number" class="form-control" name="members" id="members"min="1" max="10">
-            </div>
+        <div class="col-lg-6">
 
-            <div class="input-group mb-3">
-                <span class="input-group-text">Date</span>
-                <input type="date" name="date" id="date" class="form-control">
-            </div>
+            <h1 class="text-center mb-3">BOOK A TABLE</h1>
 
-            <div class="input-group mb-3">
-                <span class="input-group-text">Time</span>
-                <input type="time" name="time" id="time" class="form-control">
-            </div>
+            <form action="/book" method="post" class="needs-validation" novalidate>
 
-            <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-outline-primary">BOOK NOW</button>
-            </div>
-        </form>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Book For</span>
+                    <select class="form-select" aria-label="Default select example" name="book" required>
+                        <option selected value="friends">FRIENDS</option>
+                        <option value="family">FAMILY</option>
+                    </select>
+                </div>
+                
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Members</span>
+                    <input required type="number" class="form-control" name="members" id="members"min="1" max="10">
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Date</span>
+                    <input required type="date" name="date" id="date" class="form-control">
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Time</span>
+                    <input required type="time" name="time" id="time" class="form-control">
+                </div>
+
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-outline-primary">BOOK NOW</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
+
+
+<!-- booked list -->
+
+<div  id="booked-list-section" style="display: none;">
+    <div class="row row-cols-lg-2 row-cols-md-1">
+        <% bookedData.forEach(element => { %>
+
+            <div class="col">
+
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+    
+                      <div class="col-md-4">
+                        <img src="https://images.pexels.com/photos/265940/pexels-photo-265940.jpeg" class="img-fluid rounded-start" alt="...">
+                      </div>
+    
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <p class="card-text"><small class="text-body-secondary">Booking id: <%= element["_id"] %></small></p>
+                          <h5 class="card-title">Booked for: <%= element.book %></h5>
+                          <p class="card-text">Members: <%= element.members %></p>
+                          <p class="card-text"><small class="text-body-secondary">Date: <%= element.date %></small></p>
+                          <p class="card-text"><small class="text-body-secondary">Time: <%= element.time %></small></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+    
+            </div>
+
+        <% }) %>
+        
+    </div>
+</div>
+
+
+<script src="bookJs.js" type="text/JavaScript"></script>

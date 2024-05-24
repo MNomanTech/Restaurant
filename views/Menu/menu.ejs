@@ -38,6 +38,11 @@
                 </div>
                 <p><%= element.description %></p>
             </div>
+            
+                <form action="/order/cart/<%= element["_id"] %>" method="post">
+                    <button type="submit" class="btn btn-outline-dark">Add to cart</button>
+                </form>
+            
             <hr>
         <% }); %>
         
@@ -65,6 +70,9 @@
                 </div>
                 <p><%= element.description %></p>
             </div>
+            <form action="/order/cart/<%= element["_id"] %>" method="post">
+                <button type="submit" class="btn btn-outline-dark">Add to cart</button>
+            </form>
             <hr>
         <% }); %>
 
@@ -104,6 +112,9 @@
                 </div>
                 <p><%= element.description %></p>
             </div>
+            <form action="/order/cart/<%= element["_id"] %>" method="post">
+                <button type="submit" class="btn btn-outline-dark">Add to cart</button>
+            </form>
             <hr>
         <% }); %>
 

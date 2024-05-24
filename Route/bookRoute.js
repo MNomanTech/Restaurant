@@ -7,8 +7,11 @@ import Book from "../Model/bookModel.js";
 
 // all routes
 router.route('/')
-.get((req,res) => {
-    res.render('Book/book.ejs');
+.get( async (req,res) => {
+
+    let bookedData = await Book.find();
+    
+    res.render('Book/book.ejs',{bookedData});
 })
 .post(async(req,res)=>{
     let bookData = req.body;

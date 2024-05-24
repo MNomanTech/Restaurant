@@ -22,7 +22,19 @@ const userSchema = new Schema({
     address:{
         type: String,
         required: true,
-    }
+    },
+    order:[{
+        type: Schema.Types.ObjectId,
+        ref: "Order",
+    }],
+    orderCart:[{
+        type: Schema.Types.ObjectId,
+        ref: "OrderCart",
+    }],
+    book:[{
+        type: Schema.Types.ObjectId,
+        ref: "Book",
+    }]
 });
 
 const User = mongoose.model("User", userSchema);

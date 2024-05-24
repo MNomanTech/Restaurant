@@ -26,10 +26,11 @@
           <p class="card-text fw-bold fst-italic">Price: &#8377;<%= element.cart.price %>/-</p>
 
           <div class="d-flex justify-content-between">
+
                <!-- order now button -->
-            <!-- <form action="/order/<%= element["_id"]%>" method="post"> -->
+            <form action="/order/<%= element["_id"]%>" method="post">
              <button type="submit" class="btn btn-primary">Order now</button>
-            <!-- </form> -->
+            </form>
           
 
                <!-- remove button -->
@@ -49,40 +50,35 @@
 
 
 <!-- order section -->
-<div class="your-orders row row-cols-1 row-cols-md-2 mt-5" id="order-section" style="display: none;">
+<div class="your-orders row row-cols-xl-4 mt-5  mt-5" id="order-section" style="display: none;">
 
+  <% orderData.forEach(element => { %>
+    
+    <div class="col mb-5 d-flex justify-content-center">
 
-  <div class="col">
-
-    <div class="card mb-3" style="max-width: 540px;">
-      <div class="row g-0">
-
-        <!-- order image  -->
-        <div class=" col-lg-6">
-          <img src="https://images.pexels.com/photos/6383072/pexels-photo-6383072.jpeg" class="img-fluid rounded-start" alt="...">
-        </div>
-
-        <!-- order details -->
-        <div class=" col-lg-6">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
+      <div class="card" style="width: 18rem;">
+      
+          <!-- order image  -->         
+            <img src="https://images.pexels.com/photos/6383072/pexels-photo-6383072.jpeg" class="img-fluid rounded-start" alt="...">
 
   
-
+          <!-- order details -->
+            <div class="card-body">
+              <p class="card-text"><small class="text-body-secondary">Order Id: <%= element["_id"] %></small></p>
+              <h5 class="card-title"><%= element.orderItem.name %> (<%= element.orderItem.category %>)</h5>              
+              <p class="card-text"><%= element.orderItem.description %></p>
+              <p class="card-text fw-bold fst-italic">Price: &#8377;<%= element.orderItem.price %></p>
+              <p class="card-text"><small class="text-body-secondary">Payment By: <%= element.payment.method %></small></p>
+              <p class="card-text"><small class="text-body-secondary">Order date: <%= element.orderDate.toLocaleString() %></small></p>
+            </div>
+        
+      </div>
+  
+    </div>
+  <% }) %>
+  
 
 </div>
-
-
-
-
 
 
 <!-- our js -->

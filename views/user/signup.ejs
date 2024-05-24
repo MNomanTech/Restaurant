@@ -6,33 +6,50 @@
 
         <h1 class="text-center">Sign Up</h1>
 
-        <form action="/user/signup" method="post" class="mt-4">
+        <form action="/user/signup" method="post" class="mt-4 needs-validation" novalidate>
+
             <div class="input-group mb-3">
                 <span class="input-group-text">@</span>
-                <input type="text" class="form-control"  id="username" name="username" placeholder="Username">
+                <input type="text" class="form-control"  id="username" name="username" placeholder="Username" required>
+                <div class="invalid-feedback">
+                    Please choose a username.
+                </div>
             </div>
+            
 
             
             <div class="input-group mb-3">
                 <span class="input-group-text">Password</span>
-                <input type="password" name="password" id="password" class="form-control" placeholder="Enter password">
+                <input type="password" name="password" id="password" class="form-control" placeholder="Enter password" required>
+                <div class="invalid-feedback">
+                    invalid-password
+                </div>
             </div>
 
             <div class="input-group mb-3">
-                <input type="text" name="emailid"  id="emailid" class="form-control" placeholder="Email Address">
+                <input type="email" name="emailid"  id="emailid" class="form-control" placeholder="Email Address" required>
                 <span class="input-group-text">@example.com</span>
+                <div class="invalid-feedback">
+                    invalid-email
+                </div>
             </div>
 
             
             <div class="input-group mb-3">
                 <span class="input-group-text">+91</span>
-                <input type="tel" name="phone" id="phone"  class="form-control" placeholder="Phone no: " maxlength="10">
+                <input type="tel" name="phone" id="phone"  class="form-control" placeholder="Phone no: " maxlength="10" required>
+                <div class="invalid-feedback">
+                    invalid-phone number
+                </div>
             </div>
 
 
             <div class="input-group mb-3">
                 <span class="input-group-text">Address</span>
-                <input type="text" name="address" id="address"  class="form-control" placeholder="Enter your address">
+                <input type="text" name="address" id="address"  class="form-control" placeholder="Enter your address" required>
+                <div class="invalid-feedback">
+                    invalid address
+                </div>
             </div>
 
             <div class="d-flex justify-content-center">
