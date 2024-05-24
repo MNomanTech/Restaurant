@@ -15,6 +15,7 @@ import menuRoute from "./Route/menuRoute.js";
 import homeRoute from "./Route/homeRoute.js";
 import orderRoute from "./Route/orderRoute.js";
 import userRoute from "./Route/userRoute.js";
+import bookRoute from "./Route/bookRoute.js";
 
 // server and mongodb connection
 const port = 8080;
@@ -47,6 +48,7 @@ app.use("/home", homeRoute);
 app.use("/menu", menuRoute);
 app.use("/order", orderRoute);
 app.use("/user", userRoute);
+app.use("/book", bookRoute);
 
 
 

@@ -1,0 +1,53 @@
+<% layout('Layouts/boilerplate.ejs') -%>
+
+
+<div class="row d-flex justify-content-center">
+    <div class="col-lg-8">
+        <h1 class="text-center">Add Food Item</h1>
+
+        <form action="/menu/owner" method="post">
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">Name</span>
+                <input type="text" name="name" id="name" class="form-control"> 
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">Category</span>
+                <select class="form-select" aria-label="Default select example" name="category">
+                    <option value="Starter">Starter</option>
+                    <option value="Main Course" selected>Main Course</option>
+                    <option value="Dessert">Dessert</option>
+                  </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">Price</span>
+                <input type="number" name="price" id="price" min="1" class="form-control">
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">Description</span>
+                <textarea name="description" id="description" class="form-control"></textarea>
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">Available</span>
+                <select name="available" id="available" class="form-select">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-outline-danger btn-lg">Add</button>
+
+                <!-- update page  -->
+                <a href="/menu/owner/update">
+                    <button type="button" class="btn btn-danger btn-lg">Update Food Item?</button>
+                </a>
+            </div>
+
+        </form>
+    </div>
+</div>

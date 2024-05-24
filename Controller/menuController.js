@@ -8,6 +8,12 @@ let getFoodItems = async (req,res) => {
     res.render("Menu/menu.ejs", {mainCourse,starters,desserts});
 };
 
+// page only for owner to add food item or delete or update
+
+let ownerPage = async (req,res) =>{
+    res.render('Owner/owner.ejs');
+}
+
 let addFoodItem = async (req, res) => {
     let newFoodItem = req.body;
 
@@ -33,6 +39,7 @@ let deleteFoodItem = async (req,res) => {
 
 export  {
     getFoodItems,
+    ownerPage,
     addFoodItem,
     updateFoodItem,
     deleteFoodItem,

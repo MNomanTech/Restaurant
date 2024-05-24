@@ -22,6 +22,7 @@ const foodSchema = new Schema({
             },
             available: {
                 type: Boolean,
+                default: true
             }
         
     
