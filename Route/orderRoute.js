@@ -20,4 +20,9 @@ router.route('/cart/:id')
 .delete(cartItemRemove);
 
 
+router.use((err,req,res,next)=>{
+
+    res.render('alertMessage/error.ejs' ,{err});
+});
+
 export default router;

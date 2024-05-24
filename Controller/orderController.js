@@ -11,43 +11,60 @@ let orderPlace = async (req,res)=>{
     res.render("Order/order.ejs", {cartData , orderData});
 };
 
-let orderCompleted = async (req,res)=>{
-    let {id: cartId} = req.params;
-    
-    let cartData = await OrderCart.findById(cartId).populate("cart");
-    
+let orderCompleted = async (req,res,next)=>{
+    try {
+        
+            let {id: cartId} = req.params;
+            
+            let cartData = await OrderCart.findById(cartId).populate("cart");
+            
 
-    let newOrder = new Order({
-        orderItem: cartData.cart["_id"],
-    });
+            let newOrder = new Order({
+                orderItem: cartData.cart["_id"],
+            });
 
-    await newOrder.save();
+            await newOrder.save();
 
-    // removing cart item
+            // removing cart item
 
-    await OrderCart.findByIdAndDelete(cartId);
+            await OrderCart.findByIdAndDelete(cartId);
 
-    res.redirect('/order');
+            res.redirect('/order');
+    } catch (error) {
+        next(error);
+    }
 };
 
-let cartItems = async (req,res)=>{
-    let {id} = req.params;
-    let foodItem = await Food.findById(id);
-    
-    let result = await new OrderCart({
-        cart: foodItem["_id"]
-    }).save();
-    console.log(result);
+let cartItems = async (req,res,next)=>{
 
-    res.redirect('/menu');
+    try {
+        let {id} = req.params;
+        let foodItem = await Food.findById(id);
+        
+        let result = await new OrderCart({
+            cart: foodItem["_id"]
+        }).save();
+        
+    
+        res.redirect('/menu');
+        
+    } catch (error) {
+        next(error);
+    }
 }
 
-let cartItemRemove = async (req,res) =>{
-    let {id} = req.params;
+let cartItemRemove = async (req,res,next) =>{
+    try {
+        let {id} = req.params;
 
-    await OrderCart.findByIdAndDelete(id);
-    
-    res.redirect("/order");
+        await OrderCart.findByIdAndDelete(id);
+        
+        res.redirect("/order");
+
+    } catch (error) {
+        next(error);
+    }
+
 }
 
 

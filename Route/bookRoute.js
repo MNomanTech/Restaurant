@@ -13,13 +13,24 @@ router.route('/')
     
     res.render('Book/book.ejs',{bookedData});
 })
-.post(async(req,res)=>{
-    let bookData = req.body;
+.post(async(req,res,next)=>{
+    try {
+        let bookData = req.body;
     
-    let result = await new Book(bookData).save();
+        await new Book(bookData).save();
     
-    res.redirect('/home');
-})
+        res.redirect('/home');
+    } catch (error) {
+        next(error["_message"]);
+    }
+});
+
+
+router.use((err,req,res,next)=>{
+
+    console.log(err);
+    res.render('alertMessage/error.ejs' ,{err});
+});
 
 
 export default router;

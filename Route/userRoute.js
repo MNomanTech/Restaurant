@@ -27,6 +27,13 @@ router.route('/logout')
 .get(userLogout);
 
 
+// error handling middle ware;
+
+router.use((err,req,res,next)=>{
+
+    console.log(err);
+    res.render('alertMessage/error.ejs' ,{err});
+});
 
 export default router;
 

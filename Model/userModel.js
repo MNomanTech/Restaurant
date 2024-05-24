@@ -6,6 +6,7 @@ const userSchema = new Schema({
     username: {
         type: String,
         required: true,
+        unique: true
     },
     password: {
         type: String,
@@ -14,10 +15,12 @@ const userSchema = new Schema({
     emailid: {
         type: String,
         required: true,
+        unique: true
     },
     phone:{
         type: Number,
         required: true,
+        unique: true
     },
     address:{
         type: String,
