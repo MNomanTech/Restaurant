@@ -13,6 +13,11 @@ import flash from 'connect-flash';
 import cookieParser from 'cookie-parser';
 import passport from 'passport';
 import LocalStrategy from 'passport-local';
+import dotEnv from 'dotenv';
+import MongoStore from 'connect-mongo';
+
+if(process.env.NODE_ENV != "production") dotEnv.config();
+
 
 // -------------------------
 // all route imports
@@ -39,10 +44,12 @@ main()
 .catch(err => console.log(err));
 
 async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/restaurant');
+  // await mongoose.connect('mongodb://127.0.0.1:27017/restaurant');
+  await mongoose.connect(process.env.ATLAS_DB);
 
   // let ownerUser = new User({username: "ownerRestaurant",emailid: 'owner123@gmail.com',phone: 1234567899,address: 'bandlaguda'});
-  // await User.register(ownerUser,'12345');
+  // let ownerResult = await User.register(ownerUser,'12345');
+  // console.log(ownerResult);
 };
 
 // all packages middlewares
@@ -56,7 +63,12 @@ app.use(cookieParser("secret"));
 app.use(flash());
 
 app.use(session({
-   
+  store: MongoStore.create({
+    mongoUrl: process.env.ATLAS_DB,
+    crypto: {
+      secret: 'squirrel'
+    }
+  }),
   secret: "mysecretcode", 
   resave: false , 
   saveUninitialized: true,
