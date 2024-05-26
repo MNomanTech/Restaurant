@@ -96,6 +96,7 @@ app.use((req,res,next)=>{
 
 // ----------------------------
 // all router middle wares
+app.use("/home", homeRoute);
 app.use("/", homeRoute);
 app.use("/menu", menuRoute);
 app.use("/order", isLoggedIn, orderRoute);
