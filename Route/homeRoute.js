@@ -4,7 +4,7 @@ const router = e.Router({mergeParams: true});
 
 
 
-router.route("/")
+router.route("/home")
 .get((req,res) => {
     
     res.render("Home/home.ejs");
