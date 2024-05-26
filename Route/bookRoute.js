@@ -5,31 +5,41 @@ const router = e.Router({mergeParams:true});
 // model import
 import Book from "../Model/bookModel.js";
 
+// login middleware 
+import isLoggedIn from "../Middlewares/isLogin.js";
+import User from "../Model/userModel.js";
+
 // all routes
 router.route('/')
 .get( async (req,res) => {
-
-    let bookedData = await Book.find();
+    if(req.user)
+    {let bookedData = await Book.find({customerDetails: req.user["_id"]});
     
-    res.render('Book/book.ejs',{bookedData});
+    res.render('Book/book.ejs',{bookedData});}
 })
 .post(async(req,res,next)=>{
     try {
-        let bookData = req.body;
+        if(req.user )
+        {let bookData = req.body;
+        let userId = req.user["_id"];
+
+        let saved = await new Book({...bookData, customerDetails: userId}).save();
+
+        await User.findByIdAndUpdate(userId, {$push: {book: saved["_id"]}});
     
-        await new Book(bookData).save();
-    
-        res.redirect('/home');
+        req.flash('success', 'Table booked successfully! Looking forward to your visit.');
+        res.redirect('/book');}
     } catch (error) {
-        next(error["_message"]);
+        req.flash('error', 'Failed to book a table. Please try again later.')
+        next(error);
     }
 });
 
 
 router.use((err,req,res,next)=>{
 
-    console.log(err);
-    res.render('alertMessage/error.ejs' ,{err});
+    
+    res.render(req.originalUrl);
 });
 
 

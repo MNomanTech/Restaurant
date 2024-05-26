@@ -5,7 +5,7 @@ const orderSchema = new Schema({
     customerDetails: {
         type: Schema.Types.ObjectId,
         ref: "User",
-        // required: true,
+        required: true,
     },
     orderItem : {
         type: Schema.Types.ObjectId,

@@ -1,0 +1,41 @@
+#cart-icon-container{             
+    color: black;
+    
+
+    display: inline-block;
+    position: fixed;
+    bottom: 0vh;
+    right: 10px;
+    z-index: 1; 
+
+    
+ }
+ #cart-icon-container a{
+    color: black;
+ }
+.cart-icon{
+    font-size: 5rem; 
+}
+.badge-icon{
+    position: absolute;
+    right: 5%;
+    top: 20%;
+
+}
+
+@media (width <= 425px){
+    .cart-icon{
+         font-size: 3rem; 
+    }
+    .badge-icon{
+        top: 5%;
+    }
+}
+@media (426px < width < 1024px){
+    .cart-icon{
+         font-size: 3.5rem; 
+    }
+    .badge-icon{
+        top: 15%;
+    }
+}

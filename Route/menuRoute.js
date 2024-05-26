@@ -26,4 +26,9 @@ router.route("/owner")
 // .put(updateFoodItem )
 // .delete( deleteFoodItem);
 
+router.use((err,req,res,next)=>{
+    
+    res.render(req.originalUrl);
+});
+
 export default router;

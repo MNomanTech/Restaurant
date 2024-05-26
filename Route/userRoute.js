@@ -1,19 +1,22 @@
 // all packages import
 import e from "express";
+import passport from "passport";
 const router = e.Router({mergeParams: true});
-
+import isLoggedIn from "../Middlewares/isLogin.js";
 
 // Controller Import
 import {userProfile,userUpdateProfile,userSignup,userSignCompleted,userLogin,userLoginCompleted,userLogout} from "../Controller/userController.js";
 
 
 
+
+
 // all user routes
 router.route('/')
-.get(userProfile);
+.get(isLoggedIn,userProfile);
 
 router.route('/:id')
-.put(userUpdateProfile);
+.put(isLoggedIn,userUpdateProfile);
 
 router.route('/signup')
 .get(userSignup)
@@ -21,7 +24,7 @@ router.route('/signup')
 
 router.route('/login')
 .get(userLogin)
-.post(userLoginCompleted);
+.post(passport.authenticate('local',{failureRedirect:'/user/login', failureFlash: true}), userLoginCompleted);
 
 router.route('/logout')
 .get(userLogout);
@@ -31,8 +34,7 @@ router.route('/logout')
 
 router.use((err,req,res,next)=>{
 
-    console.log(err);
-    res.render('alertMessage/error.ejs' ,{err});
+    res.redirect(req.originalUrl);
 });
 
 export default router;

@@ -4,7 +4,12 @@
     <div class="container-fluid pt-3 pb-3 navbar-container2 ">
 
       <!-- restaurant logo -->
-      <a class="navbar-brand ms-5 nav-heading1" href="/menu/owner"><i class="fa-solid fa-utensils"></i>&nbsp;Restaurant</a>
+      <% if (currentUser && currentUser.username == 'ownerRestaurant') { %>
+        <a class="navbar-brand ms-5 nav-heading1" href="/menu/owner"><i class="fa-solid fa-utensils"></i>&nbsp;Restaurant</a>
+      <% } else { %>
+        <a class="navbar-brand ms-5 nav-heading1" href="/home"><i class="fa-solid fa-utensils"></i>&nbsp;Restaurant</a>
+      <% } %>
+       
 
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,11 +47,21 @@
                 <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
                   <i class="fa-solid fa-circle-user fs-2 "></i>
                 </a>
-                <ul class="dropdown-menu">          
-                  <li><a class="dropdown-item" href="/user">User Profile</a></li>
-                  <li><a class="dropdown-item" href="/user/signup">Signup</a></li>
-                  <li><a class="dropdown-item" href="/user/login">Login</a></li>
-                  <li><a class="dropdown-item" href="#">Logout</a></li>
+                <ul class="dropdown-menu">  
+                  <% if (currentUser) { %>
+                    <li><a class="dropdown-item" href="/user">User Profile</a></li>
+                  <% } %>      
+                    
+                  <% if (!currentUser) { %>
+                    <li><a class="dropdown-item" href="/user/signup">Signup</a></li>
+                    <li><a class="dropdown-item" href="/user/login">Login</a></li>                   
+                  <% } %>
+                     
+                  
+                  <% if (currentUser) { %>
+                    <li><a class="dropdown-item" href="/user/logout">Logout</a></li>
+                  <% } %>   
+                  
                 </ul>
               </li>
             </ul>

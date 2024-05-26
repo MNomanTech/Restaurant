@@ -6,6 +6,9 @@ const router = e.Router({mergeParams: true});
 // Controllers import
 import { orderPlace,orderCompleted, cartItems, cartItemRemove } from "../Controller/orderController.js";
 
+// login middleware 
+import isLoggedIn from "../Middlewares/isLogin.js";
+
 
 // all order routes
 
@@ -15,6 +18,8 @@ router.route('/')
 router.route('/:id')
 .post(orderCompleted);
 
+
+// all cart routes 
 router.route('/cart/:id')
 .post(cartItems)
 .delete(cartItemRemove);
@@ -22,7 +27,7 @@ router.route('/cart/:id')
 
 router.use((err,req,res,next)=>{
 
-    res.render('alertMessage/error.ejs' ,{err});
+    res.redirect(req.originalUrl);
 });
 
 export default router;

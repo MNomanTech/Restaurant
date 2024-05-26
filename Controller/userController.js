@@ -3,11 +3,13 @@
 import User from "../Model/userModel.js";
 
 
+
 let userProfile = async (req,res)=>{
     res.render("user/user-profile.ejs");
 }
 
 let userUpdateProfile = async (req,res,next)=>{
+
     try {
         let {id: userId}  = req.params;
         let userUpdatedData = req.body;
@@ -17,7 +19,8 @@ let userUpdateProfile = async (req,res,next)=>{
         let result = await User.findByIdAndUpdate(userId, userUpdatedData ,{runValidators: true});
         console.log(result);
 
-        res.redirect('/user');
+        req.flash("success", "Profile updated successfully. Please log in to continue.");
+        res.redirect('/user/login');
         
     } catch (error) {
         next("Please enter the correct data");
@@ -31,14 +34,27 @@ let userSignup = async (req,res)=>{
 
 let userSignCompleted = async (req,res,next)=>{
     try {
-        let newUser = req.body;
+        let {username,password,emailid,phone,address} = req.body;
 
-        await new User(newUser).save();
+        let newUser =  new User({username,emailid,phone,address});
+
+        let registeredUser = await User.register(newUser,password);
+
+        req.login(registeredUser, (err)=>{
+            if(err){
+                req.flash('error', "Automatic Login failed!");
+                next(err);
+            }
+            
+            req.flash("success", "Welcome! You've successfully signed up!");
+            res.redirect('/home');
+        })
         
-        res.redirect('/home');
+        
 
     } catch (error) {
-        next(error["_message"]);
+        req.flash("error","Signup failed: Please check your details and try again.");
+        next(error);
     }
     
 }
@@ -48,21 +64,23 @@ let userLogin = async (req,res)=>{
 }
 
 let userLoginCompleted = async (req,res,next)=>{
-    try {
-        let userData = req.body;
-
-        let check = await User.findOne(userData);
+    
+        req.flash("success","Login successful. Welcome back!");
         
-        if(!check) throw new Error("User is not found");
-
         res.redirect('/home');
-    } catch (error) {
-        next(error);
-    }
+    
 }
 
-let userLogout = async (req,res)=>{
-    
+let userLogout = async (req,res,next)=>{
+    req.logOut((err) => {
+        if(err){
+            req.flash('error', "Logout failed. Please try again later.");
+            res.redirect('/home');
+        }
+
+        req.flash('success', "You have successfully logged out.");
+        res.redirect('/home');
+    })
 }
 
 

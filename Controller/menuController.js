@@ -21,9 +21,11 @@ let addFoodItem = async (req, res,next) => {
 
         await new Food(newFoodItem).save();
         
+        req.flash('success', 'Food successfully added to the menu!');
         res.redirect('/menu/owner');
 
     } catch (error) {
+        req.flash('error', 'Failed to add food item to menu. Please try again later.');
         next(error);
     }
 };

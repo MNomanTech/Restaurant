@@ -6,17 +6,18 @@
     <div class="col-lg-8">
         <h1 class="text-center">Your Profile</h1>
 
-        <form action="/user/664f4e84e03f4259da654791?_method=PUT" method="post" class="mt-3 needs-validation" novalidate>
+        <form action="/user/<%= currentUser["_id"] %>?_method=PUT" method="post" class="mt-3 needs-validation" novalidate>
+
                     <label class="form-label" for="username">Username:</label>
                     <div class="input-group mb-3">
                         <span class="input-group-text">@</span>
-                        <input required type="text" class="form-control" value="Mohd Noman" id="username" name="username" disabled>
+                        <input required type="text" class="form-control" value="<%= currentUser.username %>" id="username" name="username" disabled>
                     </div>
 
                     <label class="form-label" for="emailid">Email:</label>
                     
                     <div class="input-group mb-3">
-                        <input required type="text" name="emailid" value="mohammednoman757@gmail.com" id="emailid" class="form-control" disabled>
+                        <input required type="text" name="emailid" value="<%= currentUser.emailid %>" id="emailid" class="form-control" disabled>
                         <span class="input-group-text">@example.com</span>
                     </div>
 
@@ -24,13 +25,13 @@
                     
                     <div class="input-group mb-3">
                         <span class="input-group-text">+91</span>
-                        <input required type="tel" name="phone" id="phone" value="9573751736" class="form-control" disabled>
+                        <input required type="tel" name="phone" id="phone" value="<%= currentUser.phone %>" class="form-control" disabled>
                     </div>
 
 
                     <div class="input-group mb-3">
                         <span class="input-group-text">Address</span>
-                        <input required type="text" name="address" id="address" value="Bandlaguda" class="form-control" disabled>
+                        <input required type="text" name="address" id="address" value="<%= currentUser.address %>" class="form-control" disabled>
                     </div>
                     
 
