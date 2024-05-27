@@ -63,7 +63,9 @@ app.use(cookieParser("secret"));
 app.use(flash());
 
 app.use(session({
-  
+  // store: MongoStore.create({
+  //   mongoUrl: process.env.ATLAS_DB,
+  // }),
   secret: "mysecretcode", 
   resave: false , 
   saveUninitialized: true,
