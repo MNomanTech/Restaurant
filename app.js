@@ -14,7 +14,7 @@ import cookieParser from 'cookie-parser';
 import passport from 'passport';
 import LocalStrategy from 'passport-local';
 import dotEnv from 'dotenv';
-import MongoStore from 'connect-mongo';
+// import MongoStore from 'connect-mongo';
 
 if(process.env.NODE_ENV != "production") dotEnv.config();
 
@@ -63,9 +63,7 @@ app.use(cookieParser("secret"));
 app.use(flash());
 
 app.use(session({
-  // store: MongoStore.create({
-  //   mongoUrl: process.env.ATLAS_DB,
-  // }),
+  
   secret: "mysecretcode", 
   resave: false , 
   saveUninitialized: true,
@@ -99,9 +97,3 @@ app.use("/menu", menuRoute);
 app.use("/order", isLoggedIn, orderRoute);
 app.use("/user", userRoute);
 app.use("/book", isLoggedIn,bookRoute);
-
-
-
-
-
-
