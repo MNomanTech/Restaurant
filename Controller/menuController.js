@@ -30,26 +30,25 @@ let addFoodItem = async (req, res,next) => {
     }
 };
 
-// let updateFoodItem = async (req, res)=> {
-//     const {id : foodId} = req.params;
+let getUpdatePage = async (req,res) =>{
 
-//     let updateFoodItem = req.body;
-    
-//     let result =  await Food.findByIdAndUpdate(foodId , updateFoodItem , {new: true , runValidators: true});
-//     console.log(result);
-// };
+    try {
+        let foodItem = await Food.find();
+        // console.log(foodItem);
+        res.render('Menu/update.ejs', {foodItem});
+    } catch (error) {
+        
+    }
+};
 
-// let deleteFoodItem = async (req,res) => {
-//     const {id: foodId} = req.params;
+let updateFoodItem = async () => {
 
-//     let result = await Food.findByIdAndDelete(foodId);
-//     console.log(result);
-// };
+}
 
 export  {
     getFoodItems,
     ownerPage,
     addFoodItem,
-    // updateFoodItem,
-    // deleteFoodItem,
+    getUpdatePage,
+    updateFoodItem,
 };

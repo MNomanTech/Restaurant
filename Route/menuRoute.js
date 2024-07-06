@@ -8,8 +8,8 @@ import {
     getFoodItems,
     ownerPage,
     addFoodItem,
-    // updateFoodItem,
-    // deleteFoodItem,
+    getUpdatePage,
+    updateFoodItem,
 
 } from "../Controller/menuController.js";
 
@@ -22,9 +22,11 @@ router.route("/owner")
 .get(ownerPage)
 .post(addFoodItem);
 
-// router.route("/owner/:id")
-// .put(updateFoodItem )
-// .delete( deleteFoodItem);
+router.route('/update')
+.get(getUpdatePage)
+.post(updateFoodItem);
+
+
 
 router.use((err,req,res,next)=>{
     

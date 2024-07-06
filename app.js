@@ -44,8 +44,8 @@ main()
 .catch(err => console.log(err));
 
 async function main() {
-  // await mongoose.connect('mongodb://127.0.0.1:27017/restaurant');
-  await mongoose.connect(process.env.ATLAS_DB);
+  await mongoose.connect('mongodb://127.0.0.1:27017/restaurant');
+  // await mongoose.connect(process.env.ATLAS_DB);
 
   // let ownerUser = new User({username: "ownerRestaurant",emailid: 'owner123@gmail.com',phone: 1234567899,address: 'bandlaguda'});
   // let ownerResult = await User.register(ownerUser,'12345');

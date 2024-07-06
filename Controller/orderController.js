@@ -6,14 +6,12 @@ import User from "../Model/userModel.js";
 
 let orderPlace = async (req,res)=>{
 
-   
     if(res.locals.currentUser){
     let orderData = await Order.find({customerDetails: res.locals.currentUser["_id"]}).populate('orderItem');
     let cartData = await OrderCart.find({customerDetails: res.locals.currentUser["_id"]}).populate('cart');
     
     res.render("Order/order.ejs", {cartData , orderData});
-    }
-    
+    } 
    
 };
 
